@@ -1,0 +1,16 @@
+Hello Jack,
+
+    I am sending you an example application for the mentioned problem. 
+    The sections you need to look at are marked up with comments.
+    
+    Please examine the following help topic about the approach we took in for solving the problem and let us know if you need more information.
+    https://docs.telerik.com/devtools/wpf/controls/radgridview/export/excel/export-xlsx
+
+    Please do note that in order for the above mentioned approach you need to add the following references:
+    - Telerik.Windows.Controls
+    - Telerik.Windows.Controls.GridView
+    - Telerik.Windows.Controls.GridView.Export
+    - Telerik.Windows.Data
+
+Best regards,
+Stenly

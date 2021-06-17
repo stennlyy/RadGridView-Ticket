@@ -1,0 +1,44 @@
+﻿<Window x:Class="RadGridViewTicket.MainWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:local="clr-namespace:RadGridViewTicket"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.Resources>
+            <!--Add reference to MyViewModel Class -->
+                <local:MyViewModel x:Key="MyViewModel"/>
+
+            <!--Add reference to MyViewModel Class -->
+            <local:StadiumCapacityStyle x:Key="stadiumCapacityStyle">
+                <!--Set the different styles for the style selector-->
+                <!--Selector for BigStadiumStyle Property -->
+                <local:StadiumCapacityStyle.BigStadiumStyle>
+                    <Style TargetType="telerik:GridViewCell">
+                        <Setter Property="Foreground" Value="Red"/>
+                    </Style>
+                </local:StadiumCapacityStyle.BigStadiumStyle>
+                <!--Add Custom Style for returned Property -->
+                <!--Selector for SmallStadiumStyle Property -->
+                <local:StadiumCapacityStyle.SmallStadiumStyle>
+                    <Style TargetType="telerik:GridViewCell">
+                        <Setter Property="Foreground" Value="Yellow" />
+                    </Style>
+                </local:StadiumCapacityStyle.SmallStadiumStyle>
+            </local:StadiumCapacityStyle>
+        </Grid.Resources>
+
+        <!--Manually created Grid-->
+        <telerik:RadGridView x:Name="manualGridView" DataContext="{StaticResource MyViewModel}"  
+                     ItemsSource="{Binding FootballTeams}"  
+                     AutoGenerateColumns="False" >
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" Header="Club Name"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding EstYear}" Header="Established"/>
+                <!--Setting CellStyleSelector for column "Stadium"-->
+                    <telerik:GridViewDataColumn DataMemberBinding="{Binding StadiumCapacity}" Header="Stadium" CellStyleSelector="{StaticResource stadiumCapacityStyle}" DataFormatString="{}{0:N0}"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <Button Content="Export to Excel" Click="btnExport_Click" HorizontalAlignment="Left" Height="44.898" Margin="186.341,215.437,0,0" VerticalAlignment="Top" Width="154.081"/>
+    </Grid>
+</Window>
